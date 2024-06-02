@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
 
     public TMP_Text scoreText;
     private float score;
+
     // Update is called once per frame
     void Update()
     {
@@ -17,5 +18,9 @@ public class ScoreManager : MonoBehaviour
             score += 1 * Time.deltaTime;
             scoreText.text = ((int)score).ToString();
         }
+    }
+    public float Score
+    {
+        get { return score; }
     }
 }

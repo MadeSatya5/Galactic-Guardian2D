@@ -10,11 +10,24 @@ public class SpawnObstacles : MonoBehaviour
     public float maxY;
     public float minY;
     public float timeBetweenSpawn;
+    private float minTimeBetweenSpawn = 0.5f;
     private float spawnTime;
+    private ScoreManager scoreManager;
+    private float spawnRateIncreaseFactor = 0.1f;
 
+    void Start()
+    {
+        scoreManager = FindObjectOfType<ScoreManager>();
+    }
     void Update()
     {
-        if(Time.time > spawnTime)
+        if (scoreManager != null)
+        {
+            // Mengurangi timeBetweenSpawn berdasarkan skor pemain
+            float decreaseAmount = scoreManager.Score * spawnRateIncreaseFactor;
+            timeBetweenSpawn = Mathf.Max(2f - decreaseAmount, minTimeBetweenSpawn);
+        }
+        if (Time.time > spawnTime)
         {
             Spawn();
             spawnTime = Time.time + timeBetweenSpawn;
