@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public float playerSpeed;
     private Rigidbody2D rb;
     private Vector2 playerDirection;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,10 @@ public class Player : MonoBehaviour
     {
         float directionY = Input.GetAxisRaw("Vertical");
         playerDirection = new Vector2(0, directionY).normalized;
+        if (Time.timeScale == 0)
+        {
+            gameManager.GameOver();
+        }
     }
 
     void FixedUpdate()

@@ -9,7 +9,6 @@ public class CameraMovement : MonoBehaviour
     private ScoreManager scoreManager;
     public float cameraSpeed;
     private float maxCameraSpeed = 40f;
-
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
@@ -33,4 +32,5 @@ public class CameraMovement : MonoBehaviour
         }
         transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
     }
+
 }

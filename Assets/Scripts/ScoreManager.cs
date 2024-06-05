@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 {
 
     public TMP_Text scoreText;
-    private float score;
+    private float score; // pakai float karena nyesuaiin Time.deltatime
 
     // Update is called once per frame
     void Update()
