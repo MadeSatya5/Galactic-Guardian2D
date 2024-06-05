@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public TMP_Text scoreText;
     private ScoreManager scoreManager;
+    public static bool isGameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +24,13 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        isGameOver = true;
         gameOverUI.SetActive(true);
         scoreText.text = "Score: " + (int)scoreManager.Score;
     }
     public void Restart()
     {
+        isGameOver = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1;
     }
 }

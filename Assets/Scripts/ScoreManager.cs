@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.FindGameObjectWithTag("Player") != null)
+        if(GameObject.FindGameObjectWithTag("Player") != null && !GameManager.isGameOver)
         {
             score += 1 * Time.deltaTime;
             scoreText.text = ((int)score).ToString();

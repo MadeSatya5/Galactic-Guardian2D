@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Border
   - Obstacle
-  - Undefined
+  - Monster
   layers:
   - Default
   - TransparentFX

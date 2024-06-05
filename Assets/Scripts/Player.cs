@@ -18,16 +18,26 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float directionY = Input.GetAxisRaw("Vertical");
-        playerDirection = new Vector2(0, directionY).normalized;
-        if (Time.timeScale == 0)
+        if (!GameManager.isGameOver) // Pastikan permainan belum berakhir sebelum mengambil input
         {
-            gameManager.GameOver();
+            float directionY = Input.GetAxisRaw("Vertical");
+            playerDirection = new Vector2(0, directionY).normalized;
         }
     }
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(0, playerDirection.y * playerSpeed);
+        if (!GameManager.isGameOver) // Pastikan permainan belum berakhir sebelum memperbarui pergerakan
+        {
+            rb.velocity = new Vector2(0, playerDirection.y * playerSpeed);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Monster"))
+        {
+            gameManager.GameOver();
+        }
     }
 }

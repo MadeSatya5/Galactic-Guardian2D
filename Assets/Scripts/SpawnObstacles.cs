@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnObstacles : MonoBehaviour
 {
     public GameObject obstacle;
+    public GameObject flyingMonster;
     public float maxX;
     public float minX;
     public float maxY;
@@ -13,7 +14,7 @@ public class SpawnObstacles : MonoBehaviour
     private float minTimeBetweenSpawn = 0.5f;
     private float spawnTime;
     private ScoreManager scoreManager;
-    private float spawnRateIncreaseFactor = 0.1f;
+    private float spawnRateIncreaseFactor = 0.08f;
 
     void Start()
     {
@@ -21,13 +22,13 @@ public class SpawnObstacles : MonoBehaviour
     }
     void Update()
     {
-        if (scoreManager != null)
+        if (scoreManager != null && !GameManager.isGameOver)
         {
             // Mengurangi timeBetweenSpawn berdasarkan skor pemain
             float decreaseAmount = scoreManager.Score * spawnRateIncreaseFactor;
             timeBetweenSpawn = Mathf.Max(2f - decreaseAmount, minTimeBetweenSpawn);
         }
-        if (Time.time > spawnTime)
+        if (Time.time > spawnTime && !GameManager.isGameOver)
         {
             Spawn();
             spawnTime = Time.time + timeBetweenSpawn;
@@ -36,9 +37,13 @@ public class SpawnObstacles : MonoBehaviour
 
     void Spawn()
     {
-        float randomX = Random.Range(minX, maxX);
-        float randomY = Random.Range(minY, maxY);
+        if(!GameManager.isGameOver) 
+        {
+            float randomX = Random.Range(minX, maxX);
+            float randomY = Random.Range(minY, maxY);
 
-        Instantiate(obstacle, transform.position + new Vector3(randomX, randomY, 0), transform.rotation);
+            GameObject toSpawn = Random.value > 0.5f ? obstacle : flyingMonster;
+            Instantiate(toSpawn, transform.position + new Vector3(randomX, randomY, 0), transform.rotation);
+        }
     }
 }
