@@ -28,5 +28,11 @@ public class FlyingMonster : Obstacle
     {
         // Panggil OnTriggerEnter2D dari base class
         base.OnTriggerEnter2D(collision);
+
+        if(collision.tag == "Bullet")
+        {
+            animator.SetBool("TakeHit", true);
+            Destroy(this.gameObject, 0.3f);
+        }
     }
 }
