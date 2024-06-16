@@ -20,7 +20,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (scoreManager != null)
         {
-            if (!GameManager.isGameOver) // Perbarui hanya jika permainan belum berakhir
+            if (!GameManager.isGameOver) // perbarui  jika isGameover = false
             {
                 if (cameraSpeed < maxCameraSpeed)
                 {

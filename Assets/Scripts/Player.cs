@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 playerDirection;
     public GameManager gameManager;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,6 +24,10 @@ public class Player : MonoBehaviour
         {
             float directionY = Input.GetAxisRaw("Vertical");
             playerDirection = new Vector2(0, directionY).normalized;
+
+            animator.SetBool("Up", directionY > 0);
+            animator.SetBool("Down", directionY < 0);
+
         }
     }
 
@@ -35,7 +41,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Monster"))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             gameManager.GameOver();
         }

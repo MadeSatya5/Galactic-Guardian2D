@@ -5,7 +5,6 @@ using UnityEngine;
 public class FlyingMonster : Obstacle
 {
     private Animator animator;
-    private GameManager gameManager;
     void Start()
     {
         animator = GetComponent<Animator>();
