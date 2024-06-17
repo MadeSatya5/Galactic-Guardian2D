@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-
-    // Start is called before the first frame update
-    void Start()
+    private AudioManager audioManager;
+    void Awake()
     {
-
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Border")
         {
             Destroy(this.gameObject);
+        }
+        else if (collision.tag == "Bullet")
+        {
+            audioManager.PlaySFX(audioManager.hit);
         }
     }
 }

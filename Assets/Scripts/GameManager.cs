@@ -10,20 +10,20 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
     private ScoreManager scoreManager;
     public static bool isGameOver;
-    // Start is called before the first frame update
+    private AudioManager audioManager;
+
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void GameOver()
     {
+        audioManager.PlaySFX(audioManager.die);
         isGameOver = true;
         gameOverUI.SetActive(true);
         scoreText.text = "Score: " + (int)scoreManager.Score;

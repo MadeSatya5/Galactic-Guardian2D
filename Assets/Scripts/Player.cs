@@ -5,10 +5,16 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float playerSpeed;
+    public GameManager gameManager;
     private Rigidbody2D rb;
     private Vector2 playerDirection;
-    public GameManager gameManager;
     private Animator animator;
+    private AudioManager audioManager;
+
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +49,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Monster"))
         {
+            audioManager.PlaySFX(audioManager.hurt);
             Health.health--;
             if(Health.health <= 0)
             {

@@ -9,6 +9,7 @@ TagManager:
   - Monster
   - BulletBorder
   - Bullet
+  - Audio
   layers:
   - Default
   - TransparentFX

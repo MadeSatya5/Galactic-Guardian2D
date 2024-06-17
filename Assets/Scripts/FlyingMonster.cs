@@ -32,7 +32,7 @@ public class FlyingMonster : Obstacle
         if(collision.tag == "Bullet")
         {
             animator.SetBool("TakeHit", true);
-            Destroy(this.gameObject, 0.3f);
+            Destroy(this.gameObject, 0.2f);
         }
     }
 }
