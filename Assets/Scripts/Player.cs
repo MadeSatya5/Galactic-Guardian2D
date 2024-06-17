@@ -41,7 +41,15 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if(collision.gameObject.CompareTag("Monster"))
+        {
+            Health.health--;
+            if(Health.health <= 0)
+            {
+                gameManager.GameOver();
+            }
+        }
+        else if(collision.gameObject.CompareTag("Obstacle"))
         {
             gameManager.GameOver();
         }
