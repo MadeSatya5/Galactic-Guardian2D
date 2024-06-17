@@ -2445,13 +2445,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1567963b950bfa40b33b17fa237a777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
   hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2072253859}
+  - {fileID: 28144141}
+  - {fileID: 2012943982}
+  - {fileID: 276126851}
+  - {fileID: 1171351743}
+  fullHeart: {fileID: 21300000, guid: ff521551997adf44a88467f7507e0b0c, type: 3}
+  emptyHeart: {fileID: 21300000, guid: a7d0b88295a04594bac22e467afb26ac, type: 3}
 --- !u!1 &1712077564
 GameObject:
   m_ObjectHideFlags: 0
