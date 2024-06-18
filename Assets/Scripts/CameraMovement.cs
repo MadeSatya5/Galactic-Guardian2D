@@ -5,10 +5,10 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     private float baseCameraSpeed = 9f;
-    private float speedIncreaseFactor = 0.8f;
+    private float speedIncreaseFactor = 0.4f;
     private ScoreManager scoreManager;
     public float cameraSpeed;
-    private float maxCameraSpeed = 40f;
+    private float maxCameraSpeed = 30f;
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
